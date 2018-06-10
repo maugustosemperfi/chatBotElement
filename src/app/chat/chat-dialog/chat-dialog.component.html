@@ -1,0 +1,32 @@
+<div class="popup-chat">
+  <div class="popup-chat-title">
+    <h4>
+      <b>BOT NEWS</b>
+    </h4>
+  </div>
+
+  <div class="popup-chat-content">
+
+
+    <div class="popup-chat-messages">
+      <ng-container *ngFor="let message of messages">
+
+        <div class="message" [ngClass]="{ 'from': message.sentBy === 'bot',
+                                    'to':   message.sentBy === 'user' }">
+          {{ message.content }}
+        </div>
+
+      </ng-container>
+    </div>
+
+    <div class="popup-chat-form">
+      <label for="nameField">Digite uma mensagem</label>
+
+
+      <input [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text">
+      <br>
+
+      <button (click)="sendMessage()">Enviar</button>
+    </div>
+
+  </div>
